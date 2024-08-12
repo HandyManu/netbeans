@@ -53,7 +53,7 @@ public class Producto {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addProducto = conexion.prepareStatement("INSERT INTO tbProductos(UUID_producto, Nombre, precio, categoria) VALUES (?, ?, ?, ?)");
+            PreparedStatement addProducto = conexion.prepareStatement("INSERT INTO tb_Productos(UUID_producto, Nombre, precio, categoria) VALUES (?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addProducto.setString(1, UUID.randomUUID().toString());
             addProducto.setString(2, getNombre());
