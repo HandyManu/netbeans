@@ -95,4 +95,22 @@ public class Producto {
             System.out.println("Este es el error en el modelo, metodo mostrar " + e);
         }
     }
+    
+    public void Eliminar(JTable tabla) {
+        //Creamos una variable igual a ejecutar el método de la clase de conexión
+        Connection conexion = ClaseConexion.getConexion();
+ 
+        //obtenemos que fila seleccionó el usuario
+        int filaSeleccionada = tabla.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
+        //borramos 
+        try {
+            PreparedStatement deleteEstudiante = conexion.prepareStatement("delete from TB_Productos where UUID_producto = ?");
+            deleteEstudiante.setString(1, miId);
+            deleteEstudiante.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("este es el error metodo de eliminar" + e);
+        }
+    }
 }

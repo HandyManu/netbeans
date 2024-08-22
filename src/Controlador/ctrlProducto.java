@@ -23,6 +23,7 @@ public class ctrlProducto implements MouseListener{
     vista.btn_Guardar.addMouseListener(this);
     
     vista.jtbProductos.addMouseListener(this);
+    vista.btn_eliminar.addMouseListener(this);
     modelo.Mostrar(vista.jtbProductos);
     }
 
@@ -38,6 +39,11 @@ public class ctrlProducto implements MouseListener{
             
             ClearData();
             
+        }
+        
+        if (e.getSource()==vista.btn_eliminar){
+            modelo.Eliminar(vista.jtbProductos);
+            modelo.Mostrar(vista.jtbProductos);
         }
     }
 
