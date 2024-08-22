@@ -25,6 +25,7 @@ public class ctrlProducto implements MouseListener{
     vista.jtbProductos.addMouseListener(this);
     vista.btn_eliminar.addMouseListener(this);
     modelo.Mostrar(vista.jtbProductos);
+    vista.btn_Actualizar.addMouseListener(this);
     }
 
     @Override
@@ -43,6 +44,19 @@ public class ctrlProducto implements MouseListener{
         
         if (e.getSource()==vista.btn_eliminar){
             modelo.Eliminar(vista.jtbProductos);
+            modelo.Mostrar(vista.jtbProductos);
+        }
+        
+        if(e.getSource()==vista.jtbProductos){
+            modelo.cargarDatosTabla(vista);
+        }
+        
+        if(e.getSource()== vista.btn_Actualizar){
+            modelo.setNombre(vista.txt_Nombre.getText());
+            modelo.setPrecio(Double.parseDouble(vista.txt_Precio.getText()));
+            modelo.setCategoria(vista.txt_Categoria.getText());
+            
+            modelo.Actualizar(vista.jtbProductos);
             modelo.Mostrar(vista.jtbProductos);
         }
     }
